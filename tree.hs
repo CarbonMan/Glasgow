@@ -10,13 +10,13 @@ insertNode i (Node x lhs rhs)
 -- | If inserting a value into a branch look to balance it.
 -- | The parent and child Nodes are passed in
 balanceNode :: Int -> Tree -> Tree ->Tree
--- | Replace the leaf with a node
+-- | Replace the leaf with a new node
 balanceNode i (Node p pLhs pRhs) Leaf   = Node i Leaf Leaf
 balanceNode i (Node p pLhs pRhs) (Node c lhs rhs)  
     -- | If the insert value should sit between the parent and child nodes then it is inserted
     | i<p && i > c   = Node i pLhs Leaf
     | i>p && i < c   = Node i Leaf pRhs
-    -- | Attach to the child
+    -- | Attach in the child branch
     | i > c          = Node c lhs (balanceNode i (Node c lhs rhs) rhs)
     | i < c          = Node c (balanceNode i (Node c lhs rhs) lhs) rhs
     -- | Equal to the child. Child stays.
