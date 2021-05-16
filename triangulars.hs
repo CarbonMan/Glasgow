@@ -8,7 +8,7 @@ import Data.List
 
 -- | Generate the nth triangular number
 triangular :: Int -> Int
-triangular x = x * (x - 1) `div` 2
+triangular x = x * (x + 1) `div` 2
 
 -- | Infinitly generate triangular numbers
 infTriangulars :: [Int]
