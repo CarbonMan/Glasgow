@@ -2,6 +2,8 @@
 -- Triangular numbers are a type of figurate number, other examples being square numbers and cube numbers. 
 -- generateTriangles 15
 -- will take the first 15 triangular numbers and display the triangles on the screen.
+-- generateOneTriangle n
+-- Generate the nth triangular number and graphically display it on the screen
 import Data.List
 
 -- | Generate the nth triangular number
@@ -42,3 +44,7 @@ showTriangles (x:xs) = do displayTriangle x
 -- | Generate a number of triangular numbers and graphically display them on the screen
 generateTriangles :: Int -> IO ()
 generateTriangles x = do showTriangles (take x infTriangulars)
+
+-- | Generate the nth triangular number and graphically display it on the screen
+generateOneTriangle :: Int -> IO ()
+generateOneTriangle x = do displayTriangle (infTriangulars !! x)
