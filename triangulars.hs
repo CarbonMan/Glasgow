@@ -1,5 +1,7 @@
 -- | A triangular number or triangle number counts objects arranged in an equilateral triangle. 
 -- Triangular numbers are a type of figurate number, other examples being square numbers and cube numbers. 
+-- generateTriangles 15
+-- will take the first 15 triangular numbers and display the triangles on the screen.
 import Data.List
 
 -- | Generate the nth triangular number
@@ -13,7 +15,7 @@ infTriangulars = [triangular x | x <- [1..]]
 -- | Build a triangular list of '*'
 buildTriangle :: Int -> Int -> [[Char]]
 buildTriangle 0 _ = []
-buildTriangle max x = (intersperse ' ' $ concat ((replicate x ['*']))) : (buildTriangle (max-x) (x+1))
+buildTriangle max x = (intersperse ' ' $ concat $ replicate x "*") : (buildTriangle (max-x) (x+1))
 
 -- | Show a triangular list of '*' with right padding
 showTriangle :: [[Char]] -> Int -> IO ()
@@ -21,7 +23,7 @@ showTriangle xs ptr
         | ptr == length xs = do return ()
         | otherwise = do 
                       let s = (length xs)-ptr-1
-                      putStr (concat $ replicate s [' '])
+                      putStr (concat $ replicate s " ")
                       putStrLn (xs !! ptr)
                       showTriangle xs (ptr+1)
 
