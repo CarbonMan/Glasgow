@@ -4,7 +4,7 @@ import Data.List
 
 -- | Generate the nth triangular number
 triangular :: Int -> Int
-triangular n = n * (n - 1) `div` 2
+triangular x = x * (x - 1) `div` 2
 
 -- | Infinitly generate triangular numbers
 infTriangulars :: [Int]
@@ -13,7 +13,7 @@ infTriangulars = [triangular x | x <- [1..]]
 -- | Build a triangular list of '*'
 buildTriangle :: Int -> Int -> [[Char]]
 buildTriangle 0 _ = []
-buildTriangle max x = concat (replicate x ['*']) : (buildTriangle (max-x) (x+1))
+buildTriangle max x = (intersperse ' ' $ concat ((replicate x ['*']))) : (buildTriangle (max-x) (x+1))
 
 -- | Show a triangular list of '*' with right padding
 showTriangle :: [[Char]] -> Int -> IO ()
@@ -22,7 +22,7 @@ showTriangle xs ptr
         | otherwise = do 
                       let s = (length xs)-ptr-1
                       putStr (concat $ replicate s [' '])
-                      putStrLn $ intersperse ' ' (xs !! ptr)
+                      putStrLn (xs !! ptr)
                       showTriangle xs (ptr+1)
 
 -- | Display a triangular number
