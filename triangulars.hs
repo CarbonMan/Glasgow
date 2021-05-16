@@ -39,6 +39,6 @@ showTriangles []     = return ()
 showTriangles (x:xs) = do displayTriangle x
                           showTriangles xs
 
--- | Generate a number of triangular numbers
+-- | Generate a number of triangular numbers and graphically display them on the screen
 generateTriangles :: Int -> IO ()
 generateTriangles x = do showTriangles (take x infTriangulars)
